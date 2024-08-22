@@ -1,5 +1,7 @@
 [build]
-  functions = "netlify-functions"
+  base = "/frontend"
+  command = "npm run build"
+  publish = "frontend/dist"  # Adjust this to your build output directory
 
-[dev]
-  functions = "netlify-functions"
+[functions]
+  directory = "frontend/netlify-functions"  # Ensure this path is correct
