@@ -1,7 +1,7 @@
 [build]
   base = "/frontend"
   command = "npm run build"
-  publish = "frontend/dist"  # Ensure this is the correct path where Vite outputs the build files
+  publish = "dist"  # This should be the output directory from Vite's build
 
 [functions]
-  directory = "frontend/netlify-functions"  # Ensure this is the correct path to your Netlify functions
+  directory = "netlify-functions"  # This should be relative to the root of the project
