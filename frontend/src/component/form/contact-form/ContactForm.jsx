@@ -55,9 +55,10 @@ const ContactForm = () => {
 		setOpen(true);
 		try {
 			const response = await axios.post(
-				"http://localhost:5000/send-email",
+				"/.netlify/functions/sendMail", // Correct endpoint for Netlify function
 				formData
 			);
+
 			setSuccess(response.data.status === "success");
 		} catch (error) {
 			setSuccess(false);
@@ -214,25 +215,17 @@ const ContactForm = () => {
 				<Modal
 					open={open}
 					onClose={handleClose}
-					className="h-dvh w-full  flex align-center justify-center"
+					className="h-dvh w-full flex align-center justify-center"
 				>
 					<Box className="bg-slate-900 h-60 w-96 my-auto">
 						{loading ? (
-							<Typography>
-								<Loading />
-							</Typography>
+							<Loading />
 						) : success === null ? (
-							<Typography>
-								<ErrorMessage />
-							</Typography>
+							<ErrorMessage />
 						) : success ? (
-							<Typography>
-								<Success />
-							</Typography>
+							<Success />
 						) : (
-							<Typography>
-								<ErrorMessage />
-							</Typography>
+							<ErrorMessage />
 						)}
 					</Box>
 				</Modal>
